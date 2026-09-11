@@ -583,6 +583,21 @@ html {
   }
 }
 
+.onepage-art-credit {
+  padding: 0 0 32px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: #c7cdd3;
+    text-underline-offset: 0.2em;
+  }
+}
+
 .reveal-section {
   opacity: 0;
   transform: translateY(12px);
