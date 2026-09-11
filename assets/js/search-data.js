@@ -50,7 +50,10 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-ranked-1st-in-both-the-introduction-to-machine-learning-and-computer-architecture-courses-at-snu-ece",
+            },},{id: "news-completed-my-service-in-the-republic-of-korea-air-force-and-returned-to-civilian-life-more-disciplined-slightly-wiser-and-more-energized-than-ever",
+          title: 'Completed my service in the Republic of Korea Air Force and returned to...',
+          description: "",
+          section: "News",},{id: "news-ranked-1st-in-both-the-introduction-to-machine-learning-and-computer-architecture-courses-at-snu-ece",
           title: 'Ranked 1st in both the Introduction to Machine Learning and Computer Architecture courses...',
           description: "",
           section: "News",},{id: "news-ranked-1st-in-the-introduction-to-computer-networking-course-at-snu-ece",
