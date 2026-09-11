@@ -1,0 +1,158 @@
+---
+layout: default
+---
+<main class="onepage-home">
+  <section id="home" class="onepage-intro" aria-labelledby="intro-title">
+    <div class="onepage-inner intro-grid">
+      <button class="intro-portrait" type="button" aria-label="Flip portrait to reveal a photo of Omin Kwon">
+        <span class="intro-portrait-card">
+          <span class="intro-portrait-face intro-portrait-front">
+            <img
+              src="{{ '/assets/img/' | append: page.profile.image | relative_url }}"
+              alt="Illustration of Isaac Newton"
+              loading="eager"
+            >
+          </span>
+          <span class="intro-portrait-face intro-portrait-back">
+            <img src="{{ '/assets/img/omin_profile_hover.jpg' | relative_url }}" alt="Portrait of Omin Kwon" loading="eager">
+          </span>
+        </span>
+      </button>
+      <div class="intro-copy">
+        <h1 id="intro-title">Omin Kwon</h1>
+        <p class="intro-role">Hi, I'm Omin Kwon, an ML systems researcher at Seoul National University.</p>
+        <p class="intro-opportunity">Looking for PhD positions starting in Fall 2027.</p>
+        <div class="intro-links" aria-label="Social links">
+          <a class="intro-social-link" href="mailto:{{ site.data.socials.email }}" aria-label="Email" title="Email">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          </a>
+          <a
+            class="intro-social-link"
+            href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}"
+            aria-label="Google Scholar"
+            title="Google Scholar"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="ai ai-google-scholar" aria-hidden="true"></i>
+          </a>
+          <a
+            class="intro-social-link"
+            href="https://linkedin.com/in/{{ site.data.socials.linkedin_username }}"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="onepage-section reveal-section" aria-labelledby="about-title">
+    <div class="onepage-inner content-column">
+      <h2 id="about-title">About</h2>
+      <div class="section-copy">
+        {{ content }}
+      </div>
+    </div>
+  </section>
+
+  <section id="research" class="onepage-section reveal-section" aria-labelledby="research-title">
+    <div class="onepage-inner content-column">
+      <h2 id="research-title">Research</h2>
+      <div class="research-list">
+        {% for area in page.research_areas %}
+          <article class="research-item">
+            <h3>{{ area.title }}</h3>
+            <p>{{ area.description }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="news" class="onepage-section reveal-section" aria-labelledby="news-title">
+    <div class="onepage-inner content-column">
+      <h2 id="news-title">News</h2>
+      <div class="onepage-news">{% include news.liquid limit=true %}</div>
+    </div>
+  </section>
+
+  <section id="publications" class="onepage-section reveal-section" aria-labelledby="publications-title">
+    <div class="onepage-inner">
+      <h2 id="publications-title">Publications</h2>
+      <div class="publication-filters" role="group" aria-label="Filter publications by research area">
+        <button class="publication-filter is-active" type="button" data-publication-filter="ml-systems" aria-pressed="true">ML Systems</button>
+        <button class="publication-filter is-active" type="button" data-publication-filter="ml-algorithms" aria-pressed="true">ML Algorithms</button>
+        <button
+          class="publication-filter is-active"
+          type="button"
+          data-publication-filter="computer-architecture"
+          aria-pressed="true"
+        >
+          Computer Arch.
+        </button>
+      </div>
+      <div class="onepage-publications">{% include selected_papers.liquid %}</div>
+      <p class="publication-filter-empty" role="status" hidden>No publication categories are selected.</p>
+    </div>
+  </section>
+
+  <section id="experience" class="onepage-section reveal-section" aria-labelledby="experience-title">
+    <div class="onepage-inner">
+      <div class="section-title-row">
+        <h2 id="experience-title">Experience & Education</h2>
+        <a
+          class="section-link"
+          href="{{ '/assets/rendercv/rendercv_output/Omin_Kwon_CV.pdf' | relative_url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Full CV
+        </a>
+      </div>
+      <div class="timeline-columns">
+        <div>
+          <h3 class="subsection-title">Experience</h3>
+          {% for item in site.data.cv.cv.sections.Experiences %}
+            <article class="timeline-item">
+              <p class="timeline-date">{{ item.start_date }} — {{ item.end_date }}</p>
+              <h4>{{ item.position }}</h4>
+              <p class="timeline-meta">{{ item.company }} · {{ item.location }}</p>
+            </article>
+          {% endfor %}
+        </div>
+        <div>
+          <h3 class="subsection-title">Education</h3>
+          {% for item in site.data.cv.cv.sections.Education %}
+            <article class="timeline-item">
+              <p class="timeline-date">{{ item.start_date }} — {{ item.end_date }}</p>
+              <h4>
+                {{- item.degree -}}
+                {% if item.area %} in {{ item.area }}{% endif %}
+              </h4>
+              <p class="timeline-meta">{{ item.institution }} · {{ item.location }}</p>
+              {% if item.note %}
+                <p class="timeline-note">{{ item.note }}</p>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="onepage-contact" aria-labelledby="contact-title">
+    <div class="onepage-inner content-column">
+      <h2 id="contact-title">Contact</h2>
+      <p>
+        For research discussions and collaborations, email me at
+        <a href="mailto:{{ site.data.socials.email }}">{{ site.data.socials.email }}</a>.
+      </p>
+    </div>
+  </section>
+</main>
+<script defer src="{{ '/assets/js/onepage.js' | relative_url | bust_file_cache }}"></script>

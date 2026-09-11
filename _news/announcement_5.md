@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Graduated from SNU ECE (B.S.) and started M.S. at [ARC Lab](https://arc.snu.ac.kr), SNU CSE, advised by Prof. Jae W. Lee.
+Graduated from SNU ECE with a B.S. and began my M.S. studies in SNU CSE, joining [ARC Lab](https://arc.snu.ac.kr), where I am fortunate to be advised by Prof. Jae W. Lee.

@@ -36,6 +36,13 @@ cv:
           - "GPA: 4.26/4.3 (upper-division), 3.95/4.3 (overall)"
           - "Leave of absence for mandatory military service (May 2021-Feb 2023)"
 
+      - institution: Hansung Science High School
+        location: Seoul, South Korea
+        degree: High School Diploma
+        start_date: 2017-03
+        end_date: 2019-03
+        note: Early graduation with academic excellence
+
     Publications:
       - title: "HERALD: High Throughput Block Diffusion LLM Serving via CPU-GPU Cooperative KV Cache Retrieval"
         authors:

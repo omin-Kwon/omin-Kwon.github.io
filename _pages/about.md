@@ -1,28 +1,33 @@
 ---
-layout: about
-title: about
+layout: onepage
+title: Omin Kwon
 permalink: /
-subtitle: M.S. Candidate at <a href='https://arc.snu.ac.kr'>ARC Lab</a>, <a href='https://snu.ac.kr'>Seoul National University</a>
+one_page: true
+description: Omin Kwon is a computer architecture and machine learning systems researcher at Seoul National University.
 
 profile:
-  align: right
-  image: prof_pic.png
-  image_circular: false # crops the image to make it circular
+  image: temporal_prof.webp
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: true
+social: true
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 10 # leave blank to include all the news in the `_news` folder
+  enabled: true
+  scrollable: false
+  limit: 20
 
-latest_posts:
-  enabled: false
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+research_areas:
+  - number: "01"
+    title: ML Systems
+    description: Building software systems to improve hardware utilization and serving throughput for emerging AI models.
+  - number: "02"
+    title: ML Algorithms
+    description: Designing algorithms for sparse attention and quantization to improve the efficiency of foundation models.
+  - number: "03"
+    title: Computer Architecture
+    description: Exploring memory, storage, and heterogeneous systems for emerging AI workloads.
 ---
 
-I am a M.S. candidate in the Department of Computer Science and Engineering at Seoul National University, advised by Prof. [Jae W. Lee](https://arc.snu.ac.kr). I am a member of the [Architecture and Code Optimization (ARC) Lab](https://arc.snu.ac.kr).
+I am an M.S. candidate in the Department of Computer Science and Engineering at Seoul National University. I am fortunate to be advised by Prof. [Jae W. Lee](https://arc.snu.ac.kr), Director of the AI Institute of Seoul National University, and am a member of the [Architecture and Code Optimization (ARC) Lab](https://arc.snu.ac.kr). I also collaborate with [Prof. Sehoon Kim](https://sehoonkim.org/), an Assistant Professor at KAIST AI, who co-advises my current research in ML systems.
 
-My research interests lie at the intersection of computer architecture, systems, and machine learning. Recently, I have been focusing on diffusion large language models, co-designing ML algorithms and systems.
+I am interested in efficient computing through the co-design of algorithms, systems, and architectures. My current research focuses on improving the inference efficiency of diffusion language models and hybrid-attention models through ML algorithm-system co-design. In the long term, I aim to build reliable and efficient long-horizon AI and robotic agents.
