@@ -21,8 +21,8 @@
   #navbar {
     min-height: 64px;
     border: 0;
-    border-bottom: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 0;
+    background: linear-gradient(180deg, #c4e2f9 0%, #d2ebff 100%);
     box-shadow: none;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -90,6 +90,72 @@
     }
   }
 
+  .onepage-theme-container {
+    display: flex;
+    align-items: center;
+    margin-left: 0.55rem;
+  }
+
+  #light-toggle.onepage-theme-toggle {
+    display: inline-flex;
+    width: auto;
+    height: 34px;
+    padding: 0 8px;
+    border: 1px solid rgba(16, 47, 79, 0.2);
+    border-radius: 999px;
+    gap: 6px;
+    color: var(--navy);
+    background: rgba(255, 255, 255, 0.45);
+    transform: none;
+    transition:
+      color 220ms ease,
+      background-color 220ms ease,
+      border-color 220ms ease;
+
+    .theme-sun,
+    .theme-moon {
+      width: 13px;
+      font-size: 13px;
+      transition: opacity 220ms ease;
+    }
+
+    .theme-moon {
+      opacity: 0.48;
+    }
+
+    .theme-toggle-track {
+      position: relative;
+      display: block;
+      width: 28px;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(16, 47, 79, 0.22);
+    }
+
+    .theme-toggle-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(10, 34, 57, 0.25);
+      transition: transform 240ms cubic-bezier(0.2, 0.75, 0.25, 1);
+    }
+
+    &:hover {
+      border-color: rgba(16, 47, 79, 0.42);
+      color: var(--navy-dark);
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgba(16, 47, 79, 0.22);
+      outline-offset: 2px;
+    }
+  }
+
   footer.fixed-bottom,
   footer.sticky-bottom {
     position: static;
@@ -126,12 +192,67 @@ html {
 }
 
 .onepage-intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: 132px 0 78px;
-  background: #fff;
+  background: linear-gradient(180deg, #d2ebff 0%, #e4f3ff 52%, #f7fbff 82%, #fff 100%);
   scroll-margin-top: 64px;
+
+  &::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    content: "";
+    background:
+      radial-gradient(circle at 18% 36%, rgba(255, 255, 255, 0.72) 0, rgba(255, 255, 255, 0.3) 22%, transparent 43%),
+      radial-gradient(circle at 78% 44%, rgba(255, 255, 255, 0.58) 0, rgba(255, 255, 255, 0.18) 25%, transparent 48%);
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+  }
+
+  &::after {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    content: "";
+    background:
+      radial-gradient(circle at 7% 23%, rgba(238, 246, 255, 0.95) 0 1px, transparent 1.8px),
+      radial-gradient(circle at 16% 67%, rgba(205, 220, 235, 0.78) 0 1.2px, transparent 2px),
+      radial-gradient(circle at 25% 14%, rgba(241, 247, 255, 0.82) 0 0.8px, transparent 1.7px),
+      radial-gradient(circle at 35% 78%, rgba(197, 217, 235, 0.72) 0 1px, transparent 1.8px),
+      radial-gradient(circle at 44% 29%, rgba(236, 244, 252, 0.8) 0 1.1px, transparent 2px),
+      radial-gradient(circle at 55% 11%, rgba(207, 225, 240, 0.76) 0 0.8px, transparent 1.6px),
+      radial-gradient(circle at 63% 71%, rgba(238, 246, 255, 0.9) 0 1.2px, transparent 2.1px),
+      radial-gradient(circle at 72% 26%, rgba(194, 215, 233, 0.72) 0 0.9px, transparent 1.8px),
+      radial-gradient(circle at 81% 59%, rgba(239, 247, 255, 0.88) 0 1px, transparent 1.9px),
+      radial-gradient(circle at 91% 17%, rgba(208, 225, 240, 0.78) 0 1.2px, transparent 2.1px),
+      radial-gradient(circle at 96% 76%, rgba(239, 247, 255, 0.84) 0 0.9px, transparent 1.8px),
+      radial-gradient(circle at 12% 88%, rgba(205, 222, 237, 0.7) 0 0.8px, transparent 1.6px);
+    filter: drop-shadow(0 0 4px rgba(202, 227, 249, 0.72));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 450ms ease;
+  }
+}
+
+.intro-network {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.88));
+  opacity: 1;
+  mask-image: radial-gradient(ellipse at 50% 46%, #000 0%, rgba(0, 0, 0, 0.9) 58%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 46%, #000 0%, rgba(0, 0, 0, 0.9) 58%, transparent 100%);
 }
 
 .intro-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   align-items: center;
   gap: 56px;
@@ -627,6 +748,165 @@ html {
   }
 }
 
+html[data-theme="dark"] {
+  .one-page-site {
+    --navy: #9bcfff;
+    --navy-dark: #c9e6ff;
+    --text: #d5dee8;
+    --muted: #95a6b8;
+    --line: #263748;
+
+    color: var(--text);
+    background: #080d14;
+
+    #navbar {
+      background: linear-gradient(180deg, #05080d 0%, #091421 100%);
+    }
+
+    .onepage-brand,
+    .onepage-nav .nav-link {
+      color: #e9f2fa !important;
+    }
+
+    .onepage-nav .nav-link:hover,
+    .onepage-nav .nav-link.active {
+      color: var(--navy) !important;
+    }
+
+    #light-toggle.onepage-theme-toggle {
+      border-color: rgba(191, 220, 246, 0.24);
+      color: #e9f4ff;
+      background: rgba(255, 255, 255, 0.07);
+
+      .theme-sun {
+        opacity: 0.48;
+      }
+
+      .theme-moon {
+        opacity: 1;
+      }
+
+      .theme-toggle-track {
+        background: rgba(138, 199, 255, 0.4);
+      }
+
+      .theme-toggle-thumb {
+        background: #dbeeff;
+        transform: translateX(12px);
+      }
+
+      &:hover {
+        border-color: rgba(191, 220, 246, 0.48);
+        color: #fff;
+        background: rgba(255, 255, 255, 0.12);
+      }
+    }
+  }
+
+  .onepage-home {
+    background: #080d14;
+  }
+
+  .onepage-intro {
+    background: linear-gradient(180deg, #091421 0%, #0b1c2b 48%, #0a141f 78%, #080d14 100%);
+
+    &::before {
+      background:
+        radial-gradient(circle at 18% 36%, rgba(139, 188, 226, 0.16) 0, rgba(100, 154, 197, 0.06) 24%, transparent 45%),
+        radial-gradient(circle at 78% 44%, rgba(173, 210, 239, 0.12) 0, rgba(100, 154, 197, 0.04) 27%, transparent 50%);
+    }
+
+    &::after {
+      opacity: 0.82;
+      animation: night-stars-shimmer 5.5s ease-in-out infinite alternate;
+    }
+  }
+
+  .intro-copy h1,
+  .research-item h3,
+  .onepage-publications .publications .title,
+  .timeline-item h4 {
+    color: #edf5fc;
+  }
+
+  .intro-portrait:focus-visible {
+    outline-color: rgba(155, 207, 255, 0.45);
+  }
+
+  .intro-links .intro-social-link {
+    border-color: #3b5268;
+    color: #b9ddff;
+    background: rgba(10, 25, 39, 0.72);
+
+    &:hover {
+      border-color: var(--navy);
+      color: #07111b;
+      background: var(--navy);
+    }
+  }
+
+  .onepage-section,
+  .onepage-contact {
+    background: #080d14;
+  }
+
+  .section-link,
+  .onepage-publications .publications .author,
+  .onepage-publications .publications .periodical,
+  .timeline-item .timeline-meta,
+  .onepage-news .table th {
+    color: #b7c3cf !important;
+  }
+
+  .publication-filter,
+  .onepage-publications .publication-area-tag {
+    background: #080d14;
+  }
+
+  .publication-filter:hover {
+    background: #111e2b;
+  }
+
+  .publication-filter.is-active {
+    color: #07111b;
+    background: var(--publication-category-color);
+  }
+
+  [data-publication-filter="ml-systems"],
+  [data-publication-category="ml-systems"] {
+    --publication-category-color: #9bcfff;
+  }
+
+  [data-publication-filter="ml-algorithms"],
+  [data-publication-category="ml-algorithms"] {
+    --publication-category-color: #72b5e8;
+  }
+
+  [data-publication-filter="computer-architecture"],
+  [data-publication-category="computer-architecture"] {
+    --publication-category-color: #a8c3dc;
+  }
+
+  .onepage-news .news-grand-prize {
+    color: #e0b84d;
+  }
+}
+
+@keyframes night-stars-shimmer {
+  0%,
+  20% {
+    opacity: 0.68;
+  }
+
+  65% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0.76;
+  }
+}
+
 @media (max-width: 767px) {
   .one-page-site #navbar {
     .container {
@@ -651,6 +931,11 @@ html {
           width: 30px;
         }
       }
+    }
+
+    .onepage-theme-container {
+      justify-content: flex-start;
+      margin: 0.4rem 0 0;
     }
   }
 
@@ -745,5 +1030,9 @@ html {
 
   .intro-portrait .intro-portrait-card {
     transition: none;
+  }
+
+  html[data-theme="dark"] .onepage-intro::after {
+    animation: none;
   }
 }

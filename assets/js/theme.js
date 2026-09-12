@@ -58,6 +58,7 @@ let applyTheme = () => {
   }
 
   document.documentElement.setAttribute("data-theme", theme);
+  updateThemeToggle(theme);
 
   // Add class to tables.
   let tables = document.getElementsByTagName("table");
@@ -88,6 +89,18 @@ let applyTheme = () => {
       background: getComputedStyle(document.documentElement).getPropertyValue("--global-bg-color") + "ee", // + 'ee' for trasparency.
     });
   }
+};
+
+// Keep the one-page sun/moon switch in sync with the active theme.
+let updateThemeToggle = (theme) => {
+  const modeToggle = document.getElementById("light-toggle");
+  if (!modeToggle || !modeToggle.matches("[data-binary-theme]")) return;
+
+  const isDark = theme === "dark";
+  const nextMode = isDark ? "day" : "night";
+  modeToggle.setAttribute("aria-pressed", String(isDark));
+  modeToggle.setAttribute("aria-label", `Switch to ${nextMode} mode`);
+  modeToggle.setAttribute("title", `Switch to ${nextMode} mode`);
 };
 
 let setHighlight = (theme) => {
@@ -301,8 +314,14 @@ let initTheme = () => {
     const mode_toggle = document.getElementById("light-toggle");
 
     mode_toggle.addEventListener("click", function () {
-      toggleThemeSetting();
+      if (mode_toggle.matches("[data-binary-theme]")) {
+        setThemeSetting(determineComputedTheme() === "dark" ? "light" : "dark");
+      } else {
+        toggleThemeSetting();
+      }
     });
+
+    updateThemeToggle(determineComputedTheme());
   });
 
   // Add event listener to the system theme preference change.
